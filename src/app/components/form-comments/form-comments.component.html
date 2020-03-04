@@ -1,0 +1,58 @@
+<div class="modal-header alert alert-warning">
+  <h4 class="modal-title">Commenti: {{workday.entrance | date: 'yyyy-MM-dd ( EEEE )'}} </h4>
+  <button type="button" class="btn btn-secondary" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+  X</button>
+</div>
+
+<form [formGroup]="commentForm" (ngSubmit)="submitForm()">
+
+  <div class="modal-body">
+    <div class="container">
+
+      <div class="row">
+        <div class="col">
+          <table class="table table-stripped" >
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Commento</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead> 
+            <tbody>
+              <tr *ngFor="let comment  of workday.comments; index as i">
+                <th scope="row">{{i+1}}</th>
+                <td>
+                  <label> {{comment.text}} </label>
+                </td>
+            
+                <td>
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                    <button class="btn btn-danger"    (click)="remove(workday, i)">
+                      <i class="fas fa-trash"></i>
+                      Elimina 
+                    </button> 
+                </div>
+                </td>
+              </tr>
+            </tbody>   
+          
+          </table>
+        </div>
+    </div>
+    
+      <div class="form-group">
+        <label for="newComment">Nuovo commento</label>
+        <input type="text" formControlName="newComment" class="form-control"  />
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-secondary" (click)="activeModal.dismiss('Close clicked')">
+      Close
+    </button>
+    <button class="btn btn-success">  Submit Form </button>
+  </div>
+
+</form>

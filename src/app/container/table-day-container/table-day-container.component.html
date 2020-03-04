@@ -1,0 +1,24 @@
+<p>
+  
+  <app-table-workdays
+    [workdays]="workdays | async" 
+    (outRefresh)="refresh($event)" 
+    (outExit)="exit($event)"
+    (outEntrance)="entrance($event)" 
+    (outRemove)="remove($event)" 
+    (outUpdate)="update($event)">
+  </app-table-workdays>
+</p>
+<!-- <hr>
+<p>
+  Tabella with material
+  <app-table-day-details 
+    [details]="workdays | async" 
+    (outRefresh)="refresh($event)" 
+    (outExit)="exit($event)"
+    (outEntrance)="entrance($event)" 
+    (outRemove)="remove($event)" 
+    (outUpdate)="update($event)"
+    (outEntranceNoSub)="entranceNoSub($event)"
+  ></app-table-day-details>
+</p> -->

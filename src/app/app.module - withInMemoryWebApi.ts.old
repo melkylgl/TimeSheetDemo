@@ -1,0 +1,55 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule} from './material.module';
+import { MatPaginatorModule } from '@angular/material';
+
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+
+import { TimeSheetService } from './services/time-sheet.service';
+import { AppComponent } from './app.component';
+import { SummaryComponent } from './components/summary/summary.component';
+import { SummaryDayDetailsComponent } from './components/summary-day-details/summary-day-details.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TableDayDetailsComponent } from './components/table-day-details/table-day-details.component';
+import {AppRoutes} from './app. routes';
+import { FormModalComponent } from './components/form-modal/form-modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StatusbarComponent } from './components/statusbar/statusbar.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MyHttpInterceptor } from './my-http-interceptor';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import { Database } from './services/database';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    SummaryComponent,
+    SummaryDayDetailsComponent,
+    DashboardComponent,
+    TableDayDetailsComponent,
+    FormModalComponent,
+    StatusbarComponent
+  ],
+  imports: [
+    BrowserModule,
+    MaterialModule, MatPaginatorModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    AppRoutes,
+    NgbModule,
+    ReactiveFormsModule,
+    HttpClientInMemoryWebApiModule.forRoot(Database, {
+      delay: 0
+    }),
+  ],
+  providers: [
+    TimeSheetService,
+    // { provide: HTTP_INTERCEPTORS, useClass: MyHttpInterceptor, multi: true }
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [FormModalComponent, StatusbarComponent]
+})
+export class AppModule { }

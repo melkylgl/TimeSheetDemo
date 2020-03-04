@@ -1,0 +1,79 @@
+
+<p>  </p>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button class="btn btn-secondary" (click)="refresh()">Refresh</button>
+  <button class="btn btn-info" (click)="entrance()">
+    <i class="fas fa-sign-out-alt"></i>
+    Entrata
+  </button>
+</div>
+
+<div class="row">
+    <div class="col">
+      <table class="table table-stripped" >
+        <thead>
+          <tr>
+            <!-- <th scope="col">_id</th> -->
+            <th scope="col">#</th>
+            <th scope="col">Giornata</th>
+            <th scope="col">Entrata</th>
+            <th scope="col">Uscita</th>
+            <th scope="col">Lavorabile</th>
+            <th scope="col">Permessi</th>
+            <th scope="col">Differenza</th>
+            <th scope="col">Lavorato</th>
+            <th scope="col">Commenti</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead> 
+        <tbody>
+          <tr *ngFor="let workday  of workdays; index as i">
+            <!-- <td>
+              <input type="checkbox" [checked]="workday.negative === 'POSITIVO'"> 
+              {{workday._id}} 
+            </td> -->
+            <th scope="row" title="_id: {{workday._id}}"> {{i +1}}</th>
+            <td>{{workday.entrance | date: 'yyyy-MM-dd ( EEEE )'}} </td>
+            <td class="alert alert-success"> {{workday.entrance | date: 'H:mm'}} </td>
+            <td class="alert alert-danger"> {{workday.exit | date: 'H:mm'}} </td>
+            <td> {{workday.workable }} </td>
+            <td> {{workday.permission }} </td>
+            <td class="alert " 
+                  [class.alert-primary]="(workday.negative === 'POSITIVO')"
+                  [class.alert-danger]="(workday.negative === 'NEGATIVO')" > 
+                  {{(workday.negative === 'POSITIVO')? '+' : '-'}}
+                  {{workday.balance | slice:0:8 }} 
+            </td>
+            <td> {{workday.worked | slice:0:8 }} </td>
+            <td> <span *ngFor="let comment of workday.comments">
+                {{comment.author}}: {{comment.text}}</span>  
+            </td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button class="btn btn-warning" (click)="openFormModal(workday)">
+                  <i class="fas fa-pen"></i>
+                  Modifica
+                </button>
+                <button class="btn btn-warning"    (click)="openCommentsModal(workday)">
+                  <i class="fas fa-comment"></i>
+                  Commenti
+                </button>
+                <button class="btn btn-info"  (click)="exit(workday)">
+                  <i class="fas fa-sign-out-alt"></i>
+                  Uscita 
+                </button> 
+                <button class="btn btn-danger"    (click)="remove(workday)">
+                  <i class="fas fa-trash"></i>
+                  Cancella</button> 
+            </div>
+            </td>
+          </tr>
+        </tbody>   
+      
+      </table>
+    </div>
+</div>
+
+
+

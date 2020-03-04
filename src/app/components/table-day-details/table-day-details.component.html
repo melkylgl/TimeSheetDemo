@@ -1,0 +1,87 @@
+
+<div class="mdl-grid">
+
+    <div class="mdl-cell mdl-cell--1-col">
+      <button class="mdl-button btn btn-info" (click)="refresh()">Refresh</button>
+    </div>
+    <div class="mdl-cell mdl-cell--1-col">
+      <button class="mdl-button btn btn-info" (click)="entrance()">Entrata</button>
+    </div>
+
+
+    <div class="mdl-cell mdl-cell--10-col">
+    <table mat-table [dataSource]="matTableDataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="_id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="day">
+        <th mat-header-cell *matHeaderCellDef> Giorno </th>
+        <td mat-cell *matCellDef="let element"> {{element.entrance | date: 'yyyy-MM-dd ( EEEE )'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="workable">
+        <th mat-header-cell *matHeaderCellDef> Lavorabile </th>
+        <td mat-cell *matCellDef="let element"> {{element.workable }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="permission">
+        <th mat-header-cell *matHeaderCellDef> Permessi </th>
+        <td mat-cell *matCellDef="let element"> {{element.permission }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="entrance">
+        <th mat-header-cell *matHeaderCellDef> Entrata </th>
+        <td mat-cell *matCellDef="let element" class="alert alert-success"> {{element.entrance | date: 'H:mm'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="exit">
+        <th mat-header-cell *matHeaderCellDef> Uscita </th>
+        <td mat-cell *matCellDef="let element" class="alert alert-danger"> {{element.exit | date: 'H:mm'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="difference">
+        <th mat-header-cell *matHeaderCellDef> Differenza </th>
+        <td mat-cell *matCellDef="let element"> {{element.difference | slice:0:8 }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="worked">
+        <th mat-header-cell *matHeaderCellDef> Lavorato </th>
+        <td mat-cell *matCellDef="let element"> {{element.worked | slice:0:8 }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="balance">
+        <th mat-header-cell *matHeaderCellDef> Saldo </th>
+        <td mat-cell *matCellDef="let element" class="alert " 
+            [class.alert-primary]="(element.negative === 'POSITIVO')"
+            [class.alert-danger]="(element.negative === 'NEGATIVO')" > 
+            {{(element.negative === 'POSITIVO')? '+' : '-'}}
+            {{element.balance | slice:0:8 }} 
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="negative">
+        <th mat-header-cell *matHeaderCellDef> Negativo </th>
+        <td mat-cell *matCellDef="let element"> {{element.negative}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Action'S </th>
+        <td mat-cell *matCellDef="let element">
+          <div  class="">
+            <button class="btn btn-warning" (click)="openFormModal(element)">Modifica</button>
+            <button class="btn btn-danger"  (click)="exit(element)" style="margin-right: 5px;">Uscita</button> 
+            <button class="btn btn-info"    (click)="remove(element)">Cancella</button> 
+          </div>
+        </td>
+      </ng-container> 
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+  </div>
+  <div class="mdl-cell mdl-cell--1-col">  
+</div>

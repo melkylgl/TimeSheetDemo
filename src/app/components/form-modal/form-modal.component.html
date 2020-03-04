@@ -1,0 +1,34 @@
+
+<div class="modal-header alert alert-warning">
+  <h4 class="modal-title">Modifica Dettaglio: {{workday.entrance | date: 'yyyy-MM-dd ( EEEE )'}} </h4>
+  <button type="button" class="btn btn-secondary" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+  X</button>
+</div>
+
+<form [formGroup]="myForm" (ngSubmit)="submitForm()">
+
+  <div class="modal-body">
+    <div class="container">
+      <div class="form-group">
+
+        <label for="entrance">Entrata</label>
+        <input type="text" formControlName="entrance" class="form-control"  />
+
+        <label for="exit">Uscita</label>
+        <input type="text" formControlName="exit" class="form-control"  />
+
+        <label for="workable">Lavorabile</label>
+        <input type="text" formControlName="workable" class="form-control"  />
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-secondary" (click)="activeModal.dismiss('Close clicked')">
+      Close
+    </button>
+    <button class="btn btn-success">  Submit Form </button>
+  </div>
+
+</form>

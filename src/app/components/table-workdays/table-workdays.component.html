@@ -24,7 +24,8 @@
             <th scope="col">Differenza</th>
             <th scope="col">Lavorato</th>
             <th scope="col">Commenti</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Action's</th>
+            <th scope="col">Action's bis</th>
           </tr>
         </thead> 
         <tbody>
@@ -67,6 +68,11 @@
                   <i class="fas fa-trash"></i>
                   Cancella</button> 
             </div>
+            </td>
+            <td>  
+              <app-flybutton
+                (outflybutton)="flybutton()">
+              </app-flybutton>
             </td>
           </tr>
         </tbody>   

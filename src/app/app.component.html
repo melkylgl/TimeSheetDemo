@@ -8,13 +8,13 @@
         <a class="mdl-navigation__link" [routerLink]="['/']">Dashboard</a>
         <a class="mdl-navigation__link" [routerLink]="['/tableDayDetails']">TableDayDetails</a>
       </nav>
+      <ng-template #statusbox></ng-template>
     </div>
   </header>
 
   <main class="mdl-layout__content" style="padding: 20px;">      
       <template ngbModalContainer></template>
-      <ng-template #statusbox></ng-template>      
-
+            
       <app-table-day-container 
           (outNotify)="refreshStatus($event)" >
       </app-table-day-container> 

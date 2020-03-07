@@ -1,0 +1,13 @@
+
+<!-- flybutton  -->
+<div [ngClass]="{'lgl-over': isOver == true}">  
+
+  <!-- Must not be void -->
+  <!-- <span>&nbsp;</span> -->
+  <app-flybutton-inner
+    (outflybutton)="flybutton($event)">
+  </app-flybutton-inner>
+
+</div>
+
+  

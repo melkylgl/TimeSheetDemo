@@ -99,4 +99,10 @@ export class TableDayContainerComponent implements OnInit {
 
   }
 
+  flybutton() {
+    Logger.logDebug('TableDayContainerComponent - flybutton:');
+    const notify: Notify = { msg: 'Premuto flybutton', date: new Date(), type: NotifyType.Info };
+    this.outNotify.emit(notify);
+  }
+
 }

@@ -15,11 +15,12 @@ export class TableWorkdaysComponent implements OnInit, OnChanges {
 
   private _COMPONENT_NAME = 'TableWorkdaysComponent' ;
 
-  @Output() outEntrance: EventEmitter<Workday> = new EventEmitter<Workday>();
-  @Output() outExit: EventEmitter<Workday> = new EventEmitter<Workday>();
-  @Output() outUpdate: EventEmitter<Workday> = new EventEmitter<Workday>();
-  @Output() outRemove: EventEmitter<Workday> = new EventEmitter<Workday>();
-  @Output() outRefresh: EventEmitter<any> = new EventEmitter<any>();
+  @Output() outEntrance: EventEmitter<Workday>  = new EventEmitter<Workday>();
+  @Output() outExit: EventEmitter<Workday>      = new EventEmitter<Workday>();
+  @Output() outUpdate: EventEmitter<Workday>    = new EventEmitter<Workday>();
+  @Output() outRemove: EventEmitter<Workday>    = new EventEmitter<Workday>();
+  @Output() outRefresh: EventEmitter<any>       = new EventEmitter<any>();
+  @Output() outflybutton: EventEmitter<any>     = new EventEmitter<any>();
 
   @Input()  workdays: Workday[];
 
@@ -108,7 +109,9 @@ export class TableWorkdaysComponent implements OnInit, OnChanges {
     });
   }
 
-
+  flybutton() {
+    this.outflybutton.emit();
+  }
 
   private getAndCalcExit(workday: Workday, exit: moment.Moment) {
 

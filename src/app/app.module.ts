@@ -25,6 +25,10 @@ import { TableDayContainerComponent } from './container/table-day-container/tabl
 import { CheckboxComponent } from './ui/checkbox/checkbox.component';
 import { TableWorkdaysComponent } from './components/table-workdays/table-workdays.component';
 import { FormCommentsComponent } from './components/form-comments/form-comments.component';
+import { FlybuttonComponent } from './ui/flybutton/flybutton.component';
+import { FlybuttonInnerComponent } from './ui/flybutton-inner/flybutton-inner.component';
+import { FlybuttonInnerCancelComponent } from './ui/flybutton-inner-cancel/flybutton-inner-cancel.component';
+import { FlybuttonInnerCommitComponent } from './ui/flybutton-inner-commit/flybutton-inner-commit.component';
 
 
 
@@ -41,7 +45,11 @@ import { FormCommentsComponent } from './components/form-comments/form-comments.
     TableDayContainerComponent,
     CheckboxComponent,
     TableWorkdaysComponent,
-    FormCommentsComponent
+    FormCommentsComponent,
+    FlybuttonComponent,
+    FlybuttonInnerComponent,
+    FlybuttonInnerCancelComponent,
+    FlybuttonInnerCommitComponent
   ],
   imports: [
     BrowserModule,

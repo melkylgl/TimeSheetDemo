@@ -1,0 +1,22 @@
+
+<!-- flybuttonInner  -->
+
+<!-- <span [ngClass]="{'lgl-inner-over': isOverInner == true}" style="padding: 2% 2% 2% 2%;">   -->
+<span style="padding: 2% 2% 2% 2%;">  
+  <nav class="navbar navbar-light bg-light">
+
+      <app-flybutton-inner-commit
+            [name]="'Commit'"
+            (outflybuttonCommit)="confirmCommit()">
+      </app-flybutton-inner-commit>
+      <app-flybutton-inner-cancel
+            [name]="'Cancel'"
+            (outflybuttonCancel)="cancelCommit()">
+      </app-flybutton-inner-cancel>    
+
+  </nav>
+</span>
+
+
+
+

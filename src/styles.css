@@ -10,4 +10,18 @@ body {
     font-weight: bold;
     text-decoration-line: line-through;
   }
-  
+
+.lgl-over {
+    background-color: lightgray;
+}
+.lgl-inner-over {
+    background-color: darkgray;
+}
+.lgl-inner-commit {
+    background-color: chartreuse;
+}
+.lgl-inner-cancel {
+    background-color: tomato;
+}
+
+

@@ -1,12 +1,21 @@
 
 <!-- flybutton  -->
-<div [ngClass]="{'lgl-over': isOver == true}">  
+<!-- <div [ngClass]="{'alert alert-warning rounded-circle': isOver == true}" style="padding: 15% 15% 15% 7%;">   -->
+<!-- <div [ngClass]="{'lgl-over        rounded': isOver == true && isOverCommit === false,
+                   'lgl-over-cancel rounded': isOver == true && isOverCommit === true }" 
+      style="padding: 15% 15% 15% 7%;">   -->
 
-  <!-- Must not be void -->
-  <!-- <span>&nbsp;</span> -->
-  <app-flybutton-inner
-    (outflybutton)="flybutton($event)">
-  </app-flybutton-inner>
+  <div 
+    [ngClass]="{ 
+      'alert alert-danger  rounded': isOver == true && isOverCommit === false,
+      'alert alert-success rounded': isOver == true && isOverCommit === true 
+    }" 
+    style="padding: 15% 15% 15% 7%;">  
+    <app-flybutton-inner
+        (outflybuttonEvent)="flybutton($event)"
+        (outflybuttonEnter)="flybuttoEnter($event)"
+    >
+    </app-flybutton-inner>
 
 </div>
 

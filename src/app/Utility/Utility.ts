@@ -1,4 +1,5 @@
 import * as moment from 'moment';
+import { FlybuttonEventType } from '../services/model';
 
 
 /**
@@ -41,16 +42,21 @@ export default class Logger {
  */
 export class DateUty {
 
-    // public static getNow(): moment.Moment {
-    //     return this.getUTCBy(moment(new Date()));
-    // }
-
-    // public static getUTCBy(momentDate: moment.Moment): moment.Moment {
-    //     return momentDate.clone().utc();
-    // }
-
     public static getFormatted(momentDate: moment.Moment): string {
         return momentDate.clone().format('YYYY-MM-DDTHH:mm:ssZ');
+    }
+
+}
+
+export class FlybuttonEventUty {
+
+    public static findFlybuttonEventBy(key: string): string {
+        const indx = FlybuttonEventType[key];
+        if (indx) {
+          const val = FlybuttonEventType[indx];
+          return val;
+        }
+        return FlybuttonEventType[-1];
     }
 
 }

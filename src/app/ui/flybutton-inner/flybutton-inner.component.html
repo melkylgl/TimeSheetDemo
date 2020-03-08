@@ -1,22 +1,18 @@
 
 <!-- flybuttonInner  -->
+<div class="btn-group" role="group" aria-label="Basic example">
 
-<!-- <span [ngClass]="{'lgl-inner-over': isOverInner == true}" style="padding: 2% 2% 2% 2%;">   -->
-<span style="padding: 2% 2% 2% 2%;">  
-  <nav class="navbar navbar-light bg-light">
+  <!-- btn: commit -->
+  <button class="btn btn-success btn-sm" title="Conferma"
+      (mouseenter) ="flybuttonEvent('COMMIT')">
+      <i class="fas fa-check"></i>
+  </button>
 
-      <app-flybutton-inner-commit
-            [name]="'Commit'"
-            (outflybuttonCommit)="confirmCommit()">
-      </app-flybutton-inner-commit>
-      <app-flybutton-inner-cancel
-            [name]="'Cancel'"
-            (outflybuttonCancel)="cancelCommit()">
-      </app-flybutton-inner-cancel>    
+  <!-- btn: Cancel -->
+  <button class="btn btn-danger btn-lg" title="Annulla" 
+      (mouseenter) ="flybuttonEvent('CANCEL')">
+      <i class="fas fa-times"></i>
+  </button> 
 
-  </nav>
-</span>
-
-
-
+</div>
 

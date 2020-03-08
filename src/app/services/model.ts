@@ -1,3 +1,4 @@
+import { FlybuttonComponent } from '../ui/flybutton/flybutton.component';
 
 export interface Comment {
   author?: string;
@@ -47,16 +48,34 @@ export interface ElasticWorkdayDto {
     };
 }
 
-export interface Notify {
-  date: Date;
-  type: NotifyType;
-  msg: string;
-}
 
+/**
+ * Notify
+ */
 export const enum NotifyType {
   Info = 0,
   Warning ,
   Error,
   OK
 }
+export interface Notify {
+  date: Date;
+  type: NotifyType;
+  msg: string;
+}
+
+/**
+ * flybuttonEvent
+ */
+export enum FlybuttonEventType {
+  VOID   = -1,
+  COMMIT = 1,
+  CANCEL
+}
+export interface FlybuttonEvent {
+  event: FlybuttonEventType;
+  msg?: string;
+}
+
+
 

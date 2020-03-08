@@ -1,5 +1,6 @@
 import { Component, OnInit, HostBinding, HostListener, Output, EventEmitter } from '@angular/core';
 import Logger from 'src/app/Utility/Utility';
+import { FlybuttonEvent } from 'src/app/services/model';
 
 @Component({
   selector: 'app-flybutton',
@@ -9,10 +10,15 @@ import Logger from 'src/app/Utility/Utility';
 export class FlybuttonComponent implements OnInit {
 
   isOver: boolean;
+  isOverCommit: boolean;
+  isCommit: boolean;
+
   @Output() outflybutton: EventEmitter<any>     = new EventEmitter<any>();
 
   constructor() {
-    this.isOver = false;
+    this.isOver       = false;
+    this.isOverCommit = false;
+    this.isCommit     = false;
   }
 
   ngOnInit() {
@@ -28,19 +34,24 @@ export class FlybuttonComponent implements OnInit {
   @HostListener('mouseleave') onMouseLeave() {
     Logger.logInfo('FlybuttonComponent - onMouseLeave');
     this.isOver = false;
+    this.isCommit = false;
   }
 
-  confirmCommit() {
-    Logger.logInfo('FlybuttonInnerComponent - onMouseLeave');
+  // confirmCommit() {
+  //   Logger.logInfo('FlybuttonInnerComponent - onMouseLeave');
+  //   this.outflybutton.emit();
+  // }
+  // cancelCommit() {
+  //   Logger.logInfo('FlybuttonInnerComponent - onMouseLeave');
+  // }
+
+  flybutton(event: FlybuttonEvent) {
+    Logger.logInfo('FlybuttonComponent - flybutton - event: ' + JSON.stringify(event));
     this.outflybutton.emit();
-  }
-  cancelCommit() {
-    Logger.logInfo('FlybuttonInnerComponent - onMouseLeave');
   }
 
-  flybutton() {
-    Logger.logInfo('FlybuttonComponent - flybutton');
-    this.outflybutton.emit();
+  flybuttoEnter(type: string) {
+    this.isOverCommit = type === 'COMMIT';
   }
 
 }

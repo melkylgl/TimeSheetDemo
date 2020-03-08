@@ -12,14 +12,13 @@ body {
   }
 
 .lgl-over {
-    background-color: lightgray;
+    z-index: 9999;
 }
-.lgl-inner-over {
-    background-color: darkgray;
-}
+
 .lgl-inner-commit {
     background-color: chartreuse;
 }
+
 .lgl-inner-cancel {
     background-color: tomato;
 }

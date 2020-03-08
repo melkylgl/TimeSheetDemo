@@ -1,5 +1,7 @@
 import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/core';
-import Logger from 'src/app/Utility/Utility';
+import Logger, { FlybuttonEventUty } from 'src/app/Utility/Utility';
+import { FlybuttonEvent, FlybuttonEventType, NotifyType } from 'src/app/services/model';
+import { FlybuttonComponent } from '../flybutton/flybutton.component';
 
 @Component({
   selector: 'app-flybutton-inner',
@@ -8,40 +10,48 @@ import Logger from 'src/app/Utility/Utility';
 })
 export class FlybuttonInnerComponent implements OnInit {
 
-  @Output() outflybutton: EventEmitter<any>     = new EventEmitter<any>();
+  @Output() outflybuttonEvent: EventEmitter<FlybuttonEvent>;
+  @Output() outflybuttonEnter: EventEmitter<string>;
 
   isOverInner: boolean;
   isCommit: boolean;
 
   constructor() {
-    this.isOverInner = false;
     this.isCommit = false;
+    this.isOverInner = false;
+    this.outflybuttonEvent = new EventEmitter<FlybuttonEvent>();
+    this.outflybuttonEnter = new EventEmitter<string>();
   }
 
   ngOnInit() {
   }
 
-  @HostListener('mouseenter') onMouseEnter() {
-    Logger.logInfo('FlybuttonInnerComponent - onMouseEnter');
+  @HostListener('mouseenter')
+  onMouseEnter(type: string) {
+    Logger.logInfo('FlybuttonInnerComponent - onMouseEnter - eventType - value: ' + type);
     this.isOverInner = true;
     this.isCommit = false;
+    this.outflybuttonEnter.emit(type);
   }
-  @HostListener('mouseleave') onMouseLeave() {
+  @HostListener('mouseleave')
+  onMouseLeave() {
     Logger.logInfo('FlybuttonInnerComponent - onMouseLeave');
     if (this.isCommit) {
       Logger.logInfo('FlybuttonInnerComponent - isCommit');
-      this.outflybutton.emit();
+      this.outflybuttonEvent.emit({ event: FlybuttonEventType.COMMIT });
     }
     this.isOverInner = false;
   }
 
-  confirmCommit() {
-    Logger.logInfo('FlybuttonInnerComponent - onMouseLeave');
-    this.isCommit = true;
-  }
-  cancelCommit() {
-    Logger.logInfo('FlybuttonInnerComponent - onMouseLeave');
-    this.isCommit = false;
+  /**
+   * 
+   * @param type 
+   */
+  flybuttonEvent(type: string) {
+    Logger.logInfo('FlybuttonInnerComponent - flybuttonEvent - eventType - value: ' + type);
+    const val = FlybuttonEventUty.findFlybuttonEventBy(type);
+    this.isCommit = val === 'COMMIT';
+    this.outflybuttonEnter.emit(type);
   }
 
 }

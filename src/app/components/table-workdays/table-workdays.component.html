@@ -69,11 +69,30 @@
                   Cancella</button> 
               </div>
             </td>
-            <td>  
+            <td> 
+
               <app-flybutton 
-                  [buttonLabel]  = "'Uscita-Fly'" [confirmLabel] = "'Seleziona'" [cancelLabel]  = "'Annulla'"
-                  (outflybutton) = "exit(workday)"
-              ></app-flybutton>
+                [buttonLabel]  = "'Modifica'" 
+                [confirmLabel] = "'Seleziona'" 
+                [cancelLabel]  = "'Annulla'"
+                (outflybutton) = "openFormModal(workday)">
+              </app-flybutton>
+
+              <app-flybutton 
+                [buttonLabel]  = "'Commenti'" 
+                [confirmLabel] = "'Seleziona'" 
+                [cancelLabel]  = "'Annulla'"
+                (outflybutton) = "openCommentsModal(workday)">
+              </app-flybutton>
+
+              <app-flybutton 
+                  [buttonLabel]  = "'Uscita'" 
+                  [confirmLabel] = "'Seleziona'" 
+                  [cancelLabel]  = "'Annulla'"
+                  (outflybutton) = "exit(workday)">
+              </app-flybutton>
+
+       
             </td>
           </tr>
         </tbody>   

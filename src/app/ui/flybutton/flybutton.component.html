@@ -6,17 +6,20 @@
                     'lgl-over-cancel rounded': isOver == true && isOverCommit === true }" 
         style="padding: 15% 15% 15% 7%;">   -->
 
-  <div 
-    class ="alert rounded"
+
+  
+
+  <div class="alert alert-secondary rounded" role="alert"
     [ngClass]="{ 
       'alert-danger' : isOver == true && isOverCommit === false,
       'alert-success': isOver == true && isOverCommit === true 
     }"   
     style="padding: 10% 10% 10% 10%;">  
 
-    <span *ngIf="isOver">{{buttonLabel}}</span>
+    <!-- <span *ngIf="isOver">{{buttonLabel}}</span> -->
+    <i class="fas fa-sign-out-alt"></i> {{buttonLabel}}
 
-    <app-flybutton-inner
+    <app-flybutton-inner *ngIf="isOver"
       [buttonLabel]  = buttonLabel
       [confirmLabel] = confirmLabel
       [cancelLabel]  = cancelLabel

@@ -1,5 +1,5 @@
-import { Component, OnInit, HostBinding, HostListener, Output, EventEmitter } from '@angular/core';
-import Logger from 'src/app/Utility/Utility';
+import { Component, OnInit, HostBinding, HostListener, Output, EventEmitter, Input } from '@angular/core';
+import Logger, { FlybuttonEventUty } from 'src/app/Utility/Utility';
 import { FlybuttonEvent } from 'src/app/services/model';
 
 @Component({
@@ -10,9 +10,12 @@ import { FlybuttonEvent } from 'src/app/services/model';
 export class FlybuttonComponent implements OnInit {
 
   isOver: boolean;
-  isOverCommit: boolean;
   isCommit: boolean;
+  isOverCommit: boolean;
 
+  @Input()  buttonLabel: string;
+  @Input()  confirmLabel: string;
+  @Input()  cancelLabel: string;
   @Output() outflybutton: EventEmitter<any>     = new EventEmitter<any>();
 
   constructor() {
@@ -24,34 +27,26 @@ export class FlybuttonComponent implements OnInit {
   ngOnInit() {
   }
 
-  // @HostListener('mouseover') onMouseOver() {
-  //   this.isOver = !this.isOver;
-  // }
   @HostListener('mouseenter') onMouseEnter() {
-    Logger.logInfo('FlybuttonComponent - onMouseEnter');
+    Logger.logDebug('FlybuttonComponent - onMouseEnter');
     this.isOver = true;
   }
+
   @HostListener('mouseleave') onMouseLeave() {
-    Logger.logInfo('FlybuttonComponent - onMouseLeave');
+    Logger.logDebug('FlybuttonComponent - onMouseLeave');
     this.isOver = false;
     this.isCommit = false;
   }
 
-  // confirmCommit() {
-  //   Logger.logInfo('FlybuttonInnerComponent - onMouseLeave');
-  //   this.outflybutton.emit();
-  // }
-  // cancelCommit() {
-  //   Logger.logInfo('FlybuttonInnerComponent - onMouseLeave');
-  // }
-
-  flybutton(event: FlybuttonEvent) {
-    Logger.logInfo('FlybuttonComponent - flybutton - event: ' + JSON.stringify(event));
-    this.outflybutton.emit();
+  flyButtonNotify(event: FlybuttonEvent) {
+    Logger.logDebug('FlybuttonComponent - flyButtonNotify - event: ' + JSON.stringify(event));
+    this.isOverCommit = FlybuttonEventUty.isCommitByEvent(event.event);
   }
-
-  flybuttoEnter(type: string) {
-    this.isOverCommit = type === 'COMMIT';
+  flyButtonEvent(event: FlybuttonEvent) {
+    Logger.logDebug('FlybuttonComponent - flyButtonEvent - event: ' + JSON.stringify(event));
+    if (FlybuttonEventUty.isCommitByEvent(event.event)) {
+      this.outflybutton.emit();
+    }
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, HostListener, Output, EventEmitter, Input } from '@angular/core';
 import Logger, { FlybuttonEventUty } from 'src/app/Utility/Utility';
 import { FlybuttonEvent, FlybuttonEventType, NotifyType } from 'src/app/services/model';
 import { FlybuttonComponent } from '../flybutton/flybutton.component';
@@ -10,8 +10,11 @@ import { FlybuttonComponent } from '../flybutton/flybutton.component';
 })
 export class FlybuttonInnerComponent implements OnInit {
 
+  @Input()  buttonLabel: string;
+  @Input()  confirmLabel: string;
+  @Input()  cancelLabel: string;
+  @Output() outflybuttonNotify: EventEmitter<FlybuttonEvent>;
   @Output() outflybuttonEvent: EventEmitter<FlybuttonEvent>;
-  @Output() outflybuttonEnter: EventEmitter<string>;
 
   isOverInner: boolean;
   isCommit: boolean;
@@ -19,39 +22,40 @@ export class FlybuttonInnerComponent implements OnInit {
   constructor() {
     this.isCommit = false;
     this.isOverInner = false;
-    this.outflybuttonEvent = new EventEmitter<FlybuttonEvent>();
-    this.outflybuttonEnter = new EventEmitter<string>();
+    this.outflybuttonEvent  = new EventEmitter<FlybuttonEvent>();
+    this.outflybuttonNotify = new EventEmitter<FlybuttonEvent>();
   }
 
   ngOnInit() {
+    Logger.logDebug('FlybuttonInnerComponent - ngOnInit - confirmLabel: ' + this.confirmLabel);
+    Logger.logDebug('FlybuttonInnerComponent - ngOnInit - cancelLabel: ' + this.cancelLabel);
   }
 
   @HostListener('mouseenter')
   onMouseEnter(type: string) {
-    Logger.logInfo('FlybuttonInnerComponent - onMouseEnter - eventType - value: ' + type);
+    Logger.logDebug('FlybuttonInnerComponent - onMouseEnter - eventType - value: ' + type);
     this.isOverInner = true;
     this.isCommit = false;
-    this.outflybuttonEnter.emit(type);
+    const flyButtonType = FlybuttonEventUty.getFlybuttonEventBy(type);
+    this.outflybuttonNotify.emit({ event: flyButtonType });
   }
+
   @HostListener('mouseleave')
   onMouseLeave() {
-    Logger.logInfo('FlybuttonInnerComponent - onMouseLeave');
+    Logger.logDebug('FlybuttonInnerComponent - onMouseLeave');
     if (this.isCommit) {
-      Logger.logInfo('FlybuttonInnerComponent - isCommit');
+      Logger.logDebug('FlybuttonInnerComponent - isCommit');
       this.outflybuttonEvent.emit({ event: FlybuttonEventType.COMMIT });
     }
     this.isOverInner = false;
   }
 
-  /**
-   * 
-   * @param type 
-   */
-  flybuttonEvent(type: string) {
-    Logger.logInfo('FlybuttonInnerComponent - flybuttonEvent - eventType - value: ' + type);
+  flyInnerButtonEvent(type: string) {
+    Logger.logDebug('FlybuttonInnerComponent - flybuttonEvent - eventType - value: ' + type);
     const val = FlybuttonEventUty.findFlybuttonEventBy(type);
-    this.isCommit = val === 'COMMIT';
-    this.outflybuttonEnter.emit(type);
+    this.isCommit = FlybuttonEventUty.isCommitByString(val);
+    const flyButtonType = FlybuttonEventUty.getFlybuttonEventBy(val);
+    this.outflybuttonNotify.emit({ event: flyButtonType });
   }
 
 }

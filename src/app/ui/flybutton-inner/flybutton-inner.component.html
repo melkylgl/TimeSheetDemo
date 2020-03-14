@@ -1,16 +1,16 @@
 
 <!-- flybuttonInner  -->
-<div class="btn-group" role="group" aria-label="Basic example">
+<div class="btn-group-xs" role="group" aria-label="Basic example">
 
   <!-- btn: commit -->
-  <button class="btn btn-success btn-sm" title="Conferma"
-      (mouseenter) ="flybuttonEvent('COMMIT')">
+  <button class="btn btn-info btn-sm" title="{{confirmLabel}}"
+      (mouseenter) ="flyInnerButtonEvent('COMMIT')"> 
       <i class="fas fa-check"></i>
   </button>
 
   <!-- btn: Cancel -->
-  <button class="btn btn-danger btn-lg" title="Annulla" 
-      (mouseenter) ="flybuttonEvent('CANCEL')">
+  <button class="btn btn-danger btn-sm" title="{{cancelLabel}}" 
+      (mouseenter) ="flyInnerButtonEvent('CANCEL')"> 
       <i class="fas fa-times"></i>
   </button> 
 

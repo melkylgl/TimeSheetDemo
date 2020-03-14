@@ -113,6 +113,7 @@ export class TableWorkdaysComponent implements OnInit, OnChanges {
     this.outflybutton.emit();
   }
 
+
   private getAndCalcExit(workday: Workday, exit: moment.Moment) {
 
     const formattmp = 'HH:mm:ss';

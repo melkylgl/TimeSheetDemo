@@ -27,8 +27,6 @@ import { TableWorkdaysComponent } from './components/table-workdays/table-workda
 import { FormCommentsComponent } from './components/form-comments/form-comments.component';
 import { FlybuttonComponent } from './ui/flybutton/flybutton.component';
 import { FlybuttonInnerComponent } from './ui/flybutton-inner/flybutton-inner.component';
-import { FlybuttonInnerCancelComponent } from './ui/flybutton-inner-cancel/flybutton-inner-cancel.component';
-import { FlybuttonInnerCommitComponent } from './ui/flybutton-inner-commit/flybutton-inner-commit.component';
 
 
 
@@ -47,9 +45,7 @@ import { FlybuttonInnerCommitComponent } from './ui/flybutton-inner-commit/flybu
     TableWorkdaysComponent,
     FormCommentsComponent,
     FlybuttonComponent,
-    FlybuttonInnerComponent,
-    FlybuttonInnerCancelComponent,
-    FlybuttonInnerCommitComponent
+    FlybuttonInnerComponent
   ],
   imports: [
     BrowserModule,

@@ -17,10 +17,12 @@ body {
 
 .lgl-inner-commit {
     background-color: chartreuse;
+    z-index: 9999;
 }
 
 .lgl-inner-cancel {
     background-color: tomato;
+    z-index: 9999;
 }
 
 

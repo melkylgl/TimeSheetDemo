@@ -3,11 +3,11 @@ import { FlybuttonEventType } from '../services/model';
 
 
 /**
- * 
- * 
+ *
+ *
  */
 export default class Logger {
-    
+
     public static ERROR_LOG = 'ERROR_LOG';
     public static INFO_LOG = 'INFO_LOG';
     public static DEBUG_LOG = 'DEBUG_LOG';
@@ -48,7 +48,27 @@ export class DateUty {
 
 }
 
+/**
+ *
+ */
 export class FlybuttonEventUty {
+
+    public static isCommitByString(type: string): boolean {
+        const val = FlybuttonEventUty.findFlybuttonEventBy(type);
+        return val === 'COMMIT';
+    }
+    public static isCommitByEvent(eventType: FlybuttonEventType): boolean {
+        const val = FlybuttonEventUty.getStringTypeBy(eventType);
+        return val === 'COMMIT';
+    }
+
+    public static getStringTypeBy(eventType: FlybuttonEventType): string {
+        switch (eventType) {
+            case FlybuttonEventType.COMMIT: return 'COMMIT';
+            case FlybuttonEventType.CANCEL: return 'CANCEL';
+            default: return 'VOID';
+        }
+    }
 
     public static findFlybuttonEventBy(key: string): string {
         const indx = FlybuttonEventType[key];
@@ -59,4 +79,14 @@ export class FlybuttonEventUty {
         return FlybuttonEventType[-1];
     }
 
+    public static getFlybuttonEventBy(key: string): FlybuttonEventType {
+        switch (key) {
+            case 'COMMIT':
+                return FlybuttonEventType.COMMIT;
+            case 'CANCEL':
+                return FlybuttonEventType.CANCEL;
+            default:
+                return FlybuttonEventType.VOID;
+        }
+    }
 }

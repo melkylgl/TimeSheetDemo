@@ -1,22 +1,32 @@
 
 <!-- flybutton  -->
-<!-- <div [ngClass]="{'alert alert-warning rounded-circle': isOver == true}" style="padding: 15% 15% 15% 7%;">   -->
-<!-- <div [ngClass]="{'lgl-over        rounded': isOver == true && isOverCommit === false,
-                   'lgl-over-cancel rounded': isOver == true && isOverCommit === true }" 
-      style="padding: 15% 15% 15% 7%;">   -->
+
+  <!-- <div [ngClass]="{'alert alert-warning rounded-circle': isOver == true}" style="padding: 15% 15% 15% 7%;">   -->
+  <!-- <div [ngClass]="{'lgl-over        rounded': isOver == true && isOverCommit === false,
+                    'lgl-over-cancel rounded': isOver == true && isOverCommit === true }" 
+        style="padding: 15% 15% 15% 7%;">   -->
 
   <div 
+    class ="alert rounded"
     [ngClass]="{ 
-      'alert alert-danger  rounded': isOver == true && isOverCommit === false,
-      'alert alert-success rounded': isOver == true && isOverCommit === true 
-    }" 
-    style="padding: 15% 15% 15% 7%;">  
+      'alert-danger' : isOver == true && isOverCommit === false,
+      'alert-success': isOver == true && isOverCommit === true 
+    }"   
+    style="padding: 10% 10% 10% 10%;">  
+
+    <span *ngIf="isOver">{{buttonLabel}}</span>
+
     <app-flybutton-inner
-        (outflybuttonEvent)="flybutton($event)"
-        (outflybuttonEnter)="flybuttoEnter($event)"
+      [buttonLabel]  = buttonLabel
+      [confirmLabel] = confirmLabel
+      [cancelLabel]  = cancelLabel
+      (outflybuttonNotify) = "flyButtonNotify($event)"
+      (outflybuttonEvent)  = "flyButtonEvent($event)"
     >
     </app-flybutton-inner>
 
 </div>
+
+<!-- (outflybuttonEnter)="flybuttoEnter($event)" -->
 
   

@@ -70,7 +70,10 @@
               </div>
             </td>
             <td>  
-              <app-flybutton (outflybutton)="flybutton()"></app-flybutton>
+              <app-flybutton 
+                  [buttonLabel]  = "'Uscita-Fly'" [confirmLabel] = "'Seleziona'" [cancelLabel]  = "'Annulla'"
+                  (outflybutton) = "exit(workday)"
+              ></app-flybutton>
             </td>
           </tr>
         </tbody>   

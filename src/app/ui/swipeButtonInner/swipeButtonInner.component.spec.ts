@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FlybuttonInnerComponent } from './flybutton-inner.component';
+import { SwipeButtonInnerComponent } from './swipeButtonInner.component';
 
 describe('FlybuttonInnerComponent', () => {
-  let component: FlybuttonInnerComponent;
-  let fixture: ComponentFixture<FlybuttonInnerComponent>;
+  let component: SwipeButtonInnerComponent;
+  let fixture: ComponentFixture<SwipeButtonInnerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FlybuttonInnerComponent ]
+      declarations: [ SwipeButtonInnerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FlybuttonInnerComponent);
+    fixture = TestBed.createComponent(SwipeButtonInnerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

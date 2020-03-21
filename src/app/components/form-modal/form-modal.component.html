@@ -5,7 +5,7 @@
   X</button>
 </div>
 
-<form [formGroup]="myForm" (ngSubmit)="submitForm()">
+<form [formGroup]="myForm" >
 
   <div class="modal-body">
     <div class="container">
@@ -20,15 +20,42 @@
         <label for="workable">Lavorabile</label>
         <input type="text" formControlName="workable" class="form-control"  />
 
-      </div>
+        <!-- DatePicker -->
+        <label for="workable">DatePicker</label>
+        <div class="input-group">
+            <input class="form-control" formControlName="datePickerTest"
+                   placeholder="yyyy-mm-dd"
+                   name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                <i class="fas fa-pen"></i>
+              </button>
+              <button class="btn btn-sm btn-outline-primary mr-2" (click)="selectToday($event)">Select Today</button>
+            </div>
+        </div>
+
+        <!-- Test.TimePicker -->
+        <label for="workable">DatePicker</label>
+        <div class="input-group">
+          <app-swipe-time-picker></app-swipe-time-picker>
+        </div>
+        
+<!-- 
+          <hr>
+          <pre>Model: {{ model | json }}</pre>      
+          <pre>Selected time: {{time | json}}</pre>
+-->
+      </div> 
     </div>
   </div>
 
+  
   <div class="modal-footer">
     <button class="btn btn-secondary" (click)="activeModal.dismiss('Close clicked')">
       Close
     </button>
-    <button class="btn btn-success">  Submit Form </button>
+    <button class="btn btn-success" (click)="submitModalForm()">  Submit Form </button>
   </div>
 
 </form>

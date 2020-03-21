@@ -12,12 +12,12 @@ import { AppComponent } from './app.component';
 import { SummaryComponent } from './components/summary/summary.component';
 import { SummaryDayDetailsComponent } from './components/summary-day-details/summary-day-details.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { TableDayDetailsComponent } from './components/table-day-details/table-day-details.component';
+// import { TableDayDetailsComponent } from './components/table-day-details/table-day-details.component';
 import {AppRoutes} from './app. routes';
 import { FormModalComponent } from './components/form-modal/form-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StatusbarComponent } from './components/statusbar/statusbar.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MyHttpInterceptor } from './my-http-interceptor';
 // import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import { Database } from './services/database';
@@ -26,7 +26,8 @@ import { CheckboxComponent } from './ui/checkbox/checkbox.component';
 import { TableWorkdaysComponent } from './components/table-workdays/table-workdays.component';
 import { FormCommentsComponent } from './components/form-comments/form-comments.component';
 import { FlybuttonComponent } from './ui/flybutton/flybutton.component';
-import { FlybuttonInnerComponent } from './ui/flybutton-inner/flybutton-inner.component';
+import { SwipeButtonInnerComponent } from './ui/swipeButtonInner/swipeButtonInner.component';
+import { SwipeTimePickerComponent } from './ui/swipe-time-picker/swipe-time-picker.component';
 
 
 
@@ -37,7 +38,7 @@ import { FlybuttonInnerComponent } from './ui/flybutton-inner/flybutton-inner.co
     SummaryComponent,
     SummaryDayDetailsComponent,
     DashboardComponent,
-    TableDayDetailsComponent,
+    // TableDayDetailsComponent,
     FormModalComponent,
     StatusbarComponent,
     TableDayContainerComponent,
@@ -45,7 +46,8 @@ import { FlybuttonInnerComponent } from './ui/flybutton-inner/flybutton-inner.co
     TableWorkdaysComponent,
     FormCommentsComponent,
     FlybuttonComponent,
-    FlybuttonInnerComponent
+    SwipeButtonInnerComponent,
+    SwipeTimePickerComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import { FlybuttonInnerComponent } from './ui/flybutton-inner/flybutton-inner.co
     HttpClientModule,
     AppRoutes,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     TimeSheetService,

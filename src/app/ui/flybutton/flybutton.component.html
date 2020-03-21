@@ -1,35 +1,32 @@
 
 <!-- flybutton  -->
-
-  <!-- <div [ngClass]="{'alert alert-warning rounded-circle': isOver == true}" style="padding: 15% 15% 15% 7%;">   -->
-  <!-- <div [ngClass]="{'lgl-over        rounded': isOver == true && isOverCommit === false,
-                    'lgl-over-cancel rounded': isOver == true && isOverCommit === true }" 
-        style="padding: 15% 15% 15% 7%;">   -->
-
-
-  
-
   <div class="alert alert-secondary rounded" role="alert"
     [ngClass]="{ 
-      'alert-danger' : isOver == true && isOverCommit === false,
-      'alert-success': isOver == true && isOverCommit === true 
-    }"   
-    style="padding: 10% 10% 10% 10%;">  
+        'alert-danger' : isOver == true && isOverCommit === false,
+        'alert-success': isOver == true && isOverCommit === true 
+     }">  
+    
+    <span>{{buttonLabel}}</span>
 
-    <!-- <span *ngIf="isOver">{{buttonLabel}}</span> -->
-    <i class="fas fa-sign-out-alt"></i> {{buttonLabel}}
-
-    <app-flybutton-inner *ngIf="isOver"
-      [buttonLabel]  = buttonLabel
-      [confirmLabel] = confirmLabel
-      [cancelLabel]  = cancelLabel
-      (outflybuttonNotify) = "flyButtonNotify($event)"
-      (outflybuttonEvent)  = "flyButtonEvent($event)"
-    >
-    </app-flybutton-inner>
+    <app-swipe-button-inner *ngIf="isOver"
+        [buttonLabel]  = buttonLabel
+        [confirmLabel] = confirmLabel
+        [cancelLabel]  = cancelLabel
+        (outInnerEvent)  = "innerEvent($event)"
+        (outInnerNotify) = "innerNotify($event)"
+    ></app-swipe-button-inner>
 
 </div>
 
-<!-- (outflybuttonEnter)="flybuttoEnter($event)" -->
+<!--
+<app-flybutton-inner *ngIf="isOver"
+[buttonLabel]  = buttonLabel
+[confirmLabel] = confirmLabel
+[cancelLabel]  = cancelLabel
+(outflybuttonNotify) = "flyButtonNotify($event)"
+(outflybuttonEvent)  = "flyButtonEvent($event)"
+></app-flybutton-inner>
+-->
+
 
   

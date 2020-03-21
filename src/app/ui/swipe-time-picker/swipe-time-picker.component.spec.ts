@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableDayDetailsComponent } from './table-day-details.component';
+import { SwipeTimePickerComponent } from './swipe-time-picker.component';
 
-describe('TableDayDetailsComponent', () => {
-  let component: TableDayDetailsComponent;
-  let fixture: ComponentFixture<TableDayDetailsComponent>;
+describe('SwipeTimePickerComponent', () => {
+  let component: SwipeTimePickerComponent;
+  let fixture: ComponentFixture<SwipeTimePickerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TableDayDetailsComponent ]
+      declarations: [ SwipeTimePickerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TableDayDetailsComponent);
+    fixture = TestBed.createComponent(SwipeTimePickerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

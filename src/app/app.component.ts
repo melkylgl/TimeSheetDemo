@@ -1,6 +1,6 @@
 import { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentRef } from '@angular/core';
 import { StatusbarComponent } from './components/statusbar/statusbar.component';
-import { TableDayDetailsComponent } from './components/table-day-details/table-day-details.component';
+// import { TableDayDetailsComponent } from './components/table-day-details/table-day-details.component';
 import Logger from 'src/app/Utility/Utility';
 import { Notify, NotifyType } from './services/model';
 
@@ -13,7 +13,7 @@ import { Notify, NotifyType } from './services/model';
 export class AppComponent {
 
 
-  @ViewChild(TableDayDetailsComponent) table: TableDayDetailsComponent;
+  // @ViewChild(TableDayDetailsComponent) table: TableDayDetailsComponent;
   @ViewChild('statusbox', { read: ViewContainerRef }) statusbox: ViewContainerRef;
 
   title = 'demoTimeSheet';

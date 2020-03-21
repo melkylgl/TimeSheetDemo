@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { FlybuttonEventType } from '../services/model';
+import { FlybuttonEventType, SwipeButtonEventType } from '../services/model';
 
 
 /**
@@ -89,4 +89,14 @@ export class FlybuttonEventUty {
                 return FlybuttonEventType.VOID;
         }
     }
+
+
+
+
+}
+
+// ----------------------------------------------------------------------------
+
+export class SwipeButtonUty {
+
 }

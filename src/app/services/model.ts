@@ -77,5 +77,42 @@ export interface FlybuttonEvent {
   msg?: string;
 }
 
+// ----------------------------------------------------------------------------
+
+export enum SwipeButtonEventType {
+  VOID   = -1,
+  COMMIT = 1,
+  CANCEL
+}
+
+
+export class SwipeButtonEvent {
+  type: string;
+  info?: string;
+
+  constructor(type: string) {
+    this.type = type;
+  }
+
+}
+
+export class SwipeButtonInnerEvent {
+  type: string;
+  info?: string;
+
+  constructor(type: string) {
+    this.type = type;
+  }
+
+}
+export class SwipeButtonInnerNotify {
+  type: string;
+
+  constructor(type: string){
+    this.type = type;
+  }
+}
+
+
 
 

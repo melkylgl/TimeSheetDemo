@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FlybuttonComponent } from './flybutton.component';
+import { SwipeButtonComponent } from './swipe-button.component';
 
-describe('FlybuttonComponent', () => {
-  let component: FlybuttonComponent;
-  let fixture: ComponentFixture<FlybuttonComponent>;
+describe('SwipeButtonComponent', () => {
+  let component: SwipeButtonComponent;
+  let fixture: ComponentFixture<SwipeButtonComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FlybuttonComponent ]
+      declarations: [ SwipeButtonComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FlybuttonComponent);
+    fixture = TestBed.createComponent(SwipeButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

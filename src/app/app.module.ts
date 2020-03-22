@@ -19,15 +19,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StatusbarComponent } from './components/statusbar/statusbar.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MyHttpInterceptor } from './my-http-interceptor';
-// import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import { Database } from './services/database';
 import { TableDayContainerComponent } from './container/table-day-container/table-day-container.component';
 import { CheckboxComponent } from './ui/checkbox/checkbox.component';
 import { TableWorkdaysComponent } from './components/table-workdays/table-workdays.component';
 import { FormCommentsComponent } from './components/form-comments/form-comments.component';
-import { FlybuttonComponent } from './ui/flybutton/flybutton.component';
-import { SwipeButtonInnerComponent } from './ui/swipeButtonInner/swipeButtonInner.component';
+import { SwipeButtonInnerComponent } from './ui/swipe-button-inner/swipe-button-inner.component';
 import { SwipeTimePickerComponent } from './ui/swipe-time-picker/swipe-time-picker.component';
+import { SwipeButtonComponent } from './ui/swipe-button/swipe-button.component';
 
 
 
@@ -45,7 +44,7 @@ import { SwipeTimePickerComponent } from './ui/swipe-time-picker/swipe-time-pick
     CheckboxComponent,
     TableWorkdaysComponent,
     FormCommentsComponent,
-    FlybuttonComponent,
+    SwipeButtonComponent,
     SwipeButtonInnerComponent,
     SwipeTimePickerComponent
   ],

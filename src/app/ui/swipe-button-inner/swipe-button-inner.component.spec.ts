@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SwipeButtonInnerComponent } from './swipeButtonInner.component';
+import { SwipeButtonInnerComponent } from './swipe-button-inner.component';
 
-describe('FlybuttonInnerComponent', () => {
+describe('SwipeButtonInnerComponent', () => {
   let component: SwipeButtonInnerComponent;
   let fixture: ComponentFixture<SwipeButtonInnerComponent>;
 

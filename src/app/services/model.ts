@@ -1,4 +1,3 @@
-import { FlybuttonComponent } from '../ui/flybutton/flybutton.component';
 
 export interface Comment {
   author?: string;

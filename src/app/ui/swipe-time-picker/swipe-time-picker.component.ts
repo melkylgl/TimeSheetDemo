@@ -20,6 +20,10 @@ export class SwipeTimePickerComponent implements OnInit {
 
   constructor() {
     this.selectedDigit = this._VOID_VALUE;
+    this.resetTime();
+  }
+
+  private resetTime() {
     this.digitH1 = '0';
     this.digitH2 = '0';
     this.digitS1 = '0';
@@ -52,6 +56,11 @@ export class SwipeTimePickerComponent implements OnInit {
   swipeButtonEvent(event: SwipeButtonEvent) {
     Logger.logDebug('SwipeTimePickerComponent - swipeButtonEvent - selectDigit:' + this.selectedDigit);
     Logger.logDebug('SwipeTimePickerComponent - swipeButtonEvent - event:' + JSON.stringify(event));
+
+    if(event.info === 'Azzera') {
+      this.resetTime();
+      return;
+    }
 
     switch (this.selectedDigit) {
       case 'H1': this.digitH1 = event.info; break;

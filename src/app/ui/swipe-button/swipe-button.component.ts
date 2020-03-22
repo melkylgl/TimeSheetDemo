@@ -41,7 +41,9 @@ export class SwipeButtonComponent implements OnInit {
 
   innerEvent(event: SwipeButtonInnerEvent) {
     Logger.logDebug('SwipeButtonComponent - innerEvent - type: ' + event.type);
-    this.outSwipeButtonEvent.emit(event);
+    const eventmsg = new SwipeButtonEvent(event.type);
+    eventmsg.info = this.buttonLabel;
+    this.outSwipeButtonEvent.emit(eventmsg);
   }
 
   innerNotify(event: SwipeButtonInnerNotify) {

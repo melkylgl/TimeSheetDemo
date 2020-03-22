@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import Logger from 'src/app/Utility/Utility';
+import { SwipeButtonEvent } from 'src/app/services/model';
 
 
 @Component({
@@ -12,9 +13,17 @@ export class SwipeTimePickerComponent implements OnInit {
   _VOID_VALUE = 'void_value';
 
   selectedDigit: string;
+  digitH1: string;
+  digitH2: string;
+  digitS1: string;
+  digitS2: string;
 
   constructor() {
     this.selectedDigit = this._VOID_VALUE;
+    this.digitH1 = '0';
+    this.digitH2 = '0';
+    this.digitS1 = '0';
+    this.digitS2 = '0';
   }
 
   ngOnInit() {
@@ -34,10 +43,26 @@ export class SwipeTimePickerComponent implements OnInit {
     return this.selectedDigit !== this._VOID_VALUE;
   }
 
-  @HostListener('mouseleave') onMouseLeave() {
+  @HostListener('mouseleave')
+  onMouseLeave() {
     Logger.logDebug('SwipeTimePickerComponent - onMouseLeave ');
     this.selectedDigit = this._VOID_VALUE;
   }
 
+  swipeButtonEvent(event: SwipeButtonEvent) {
+    Logger.logDebug('SwipeTimePickerComponent - swipeButtonEvent - selectDigit:' + this.selectedDigit);
+    Logger.logDebug('SwipeTimePickerComponent - swipeButtonEvent - event:' + JSON.stringify(event));
+
+    switch (this.selectedDigit) {
+      case 'H1': this.digitH1 = event.info; break;
+      case 'H2': this.digitH2 = event.info; break;
+      case 's1': this.digitS1 = event.info; break;
+      case 's2': this.digitS2 = event.info; break;
+      default  :
+        Logger.logError(' SwipeTimePickerComponent - swipeButtonEvent - error: selectedDigit not found.');
+        break;
+    }
+
+  }
 
 }

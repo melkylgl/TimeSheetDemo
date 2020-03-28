@@ -43,6 +43,10 @@ export class SwipeButtonComponent implements OnInit {
     Logger.logDebug('SwipeButtonComponent - innerEvent - type: ' + event.type);
     const eventmsg = new SwipeButtonEvent(event.type);
     eventmsg.info = this.buttonLabel;
+    this.isCommit = event.type === 'COMMIT';
+    if (this.isCommit) {
+      this.isOver = false;
+    }
     this.outSwipeButtonEvent.emit(eventmsg);
   }
 

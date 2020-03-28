@@ -2,19 +2,27 @@
 <!-- Swipe Button Inner  -->
 
 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group mr-2" role="group" aria-label="First group">
+    <div class="btn-group mr-2" role="group" aria-label="First group">
 
-  <!-- btn: Cancel -->
-  <button class="btn btn-danger btn-sm" title="{{cancelLabel}}" 
-        (mouseenter)="wichButton('CANCEL')">
-    <i class="fas fa-times"></i>
-  </button> 
+    <!-- btn: Cancel -->
+    <button class="btn btn-danger btn-sm" title="{{cancelLabel}}" 
+          (mouseenter)="wichButton('CANCEL')">
+      <i class="fas fa-times"></i>
+    </button> 
 
+    <!-- btn: commit -->
+    <button class="btn btn-secondary btn-sm" title="{{confirmLabel}}" 
+          (mouseenter)="wichButton('COMMIT')">
+      <i class="fas fa-check"></i>
+    </button> 
+  </div>
+</div>
+<div class="btn-group mr-2" role="group" aria-label="First group">
   <!-- btn: commit -->
-  <button class="btn btn-success btn-sm" title="{{confirmLabel}}" 
-        (mouseenter)="wichButton('COMMIT')">
-    <i class="fas fa-check"></i>
+  <button *ngIf="isCommit" class="btn btn-success btn-lg" title="{{confirmLabel}}" 
+        (mouseenter)="confirmButton()">
+    <i class="fas fa-check-double"></i>
   </button> 
 </div>
-</div>
+
 

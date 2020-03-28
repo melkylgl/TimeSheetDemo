@@ -1,6 +1,8 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentRef, AfterViewInit } from '@angular/core';
 import Logger from 'src/app/Utility/Utility';
 import { SwipeButtonEvent } from 'src/app/services/model';
+import { StatusbarComponent } from 'src/app/components/statusbar/statusbar.component';
+import * as moment from 'moment';
 
 
 @Component({
@@ -8,9 +10,13 @@ import { SwipeButtonEvent } from 'src/app/services/model';
   templateUrl: './swipe-time-picker.component.html',
   styleUrls: ['./swipe-time-picker.component.css']
 })
-export class SwipeTimePickerComponent implements OnInit {
+export class SwipeTimePickerComponent implements OnInit, AfterViewInit {
 
   _VOID_VALUE = 'void_value';
+
+  @ViewChild('errorbox', { read: ViewContainerRef }) errorbox: ViewContainerRef;
+
+  errorboxRef: ComponentRef<StatusbarComponent>;
 
   selectedDigit: string;
   digitH1: string;
@@ -18,7 +24,7 @@ export class SwipeTimePickerComponent implements OnInit {
   digitS1: string;
   digitS2: string;
 
-  constructor() {
+  constructor(private factory: ComponentFactoryResolver) {
     this.selectedDigit = this._VOID_VALUE;
     this.resetTime();
   }
@@ -32,6 +38,29 @@ export class SwipeTimePickerComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  ngAfterViewInit(): void {
+  }
+
+  private createErrorbox(errorMsg: string) {
+    this.destroyErrorbox();
+    const componentResolver = this.factory.resolveComponentFactory(StatusbarComponent);
+    this.errorboxRef = this.errorbox.createComponent(componentResolver);
+    this.errorboxRef.instance.date = this.getNow();
+    this.errorboxRef.instance.type = this.getType();
+    this.errorboxRef.instance.msg = errorMsg;
+    this.errorboxRef.changeDetectorRef.detectChanges();
+    setTimeout(() => this.destroyErrorbox(), 3000);
+  }
+
+  private destroyErrorbox(): void {
+    if (this.errorboxRef) {
+      this.errorboxRef.destroy();
+      delete this.errorboxRef;
+    }
+  }
+
+
 
   selectDigit(digit: string) {
     Logger.logDebug('SwipeTimePickerComponent - selectDigit - digit:' + digit);
@@ -63,10 +92,10 @@ export class SwipeTimePickerComponent implements OnInit {
     }
 
     switch (this.selectedDigit) {
-      case 'H1': this.digitH1 = event.info; break;
-      case 'H2': this.digitH2 = event.info; break;
-      case 's1': this.digitS1 = event.info; break;
-      case 's2': this.digitS2 = event.info; break;
+      case 'H1': this.checkTimeInserted(event.info, this.digitH2, this.digitS1, this.digitS2); break;
+      case 'H2': this.checkTimeInserted(this.digitH1, event.info, this.digitS1, this.digitS2); break;
+      case 's1': this.checkTimeInserted(this.digitH1, this.digitH2, event.info, this.digitS2); break;
+      case 's2': this.checkTimeInserted(this.digitH1, this.digitH2, this.digitS1, event.info); break;
       default  :
         Logger.logError(' SwipeTimePickerComponent - swipeButtonEvent - error: selectedDigit not found.');
         break;
@@ -74,4 +103,22 @@ export class SwipeTimePickerComponent implements OnInit {
 
   }
 
+  private checkTimeInserted(h1: string, h2: string, s1: string, s2: string) {
+    const value = `${h1}${h2}${s1}${s2}`;
+    if (moment(value, 'hmm').isValid()) {
+      this.digitH1 = h1;
+      this.digitH2 = h2;
+      this.digitS1 = s1;
+      this.digitS2 = s2;
+    } else {
+      this.createErrorbox(`Attenzione data non valida: ${h1}${h2}:${s1}${s2}`);
+    }
+  }
+
+  getNow(): Date {
+    return new Date();
+  }
+  getType(): string {
+    return 'alert alert-danger';
+  }
 }

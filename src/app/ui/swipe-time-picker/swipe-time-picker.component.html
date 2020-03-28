@@ -1,51 +1,50 @@
 
-
-
 <!-- Time Picker -->
-
  <div class="input-group">
+
     <div class="input-group-append">
-
-              <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                <div class="btn-group mr-2" role="group" aria-label="First group">
-
-                  <div class="input-group-prepend">
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group mr-2" role="group" aria-label="First group">
+            <div class="input-group-prepend">
                     <div class="input-group-text" id="btnGroupAddon">
                       <i class="far fa-clock"></i>
                     </div>
-                  </div>
-                  <diV>
-                    <input type="text" class="form-control" 
-                      value="{{digitH1}}{{digitH2}}:{{digitS1}}{{digitS2}}"/>
-                  </diV>
+            </div>
+            <diV>
+              <input type="text" class="form-control" 
+                  value="{{digitH1}}{{digitH2}}:{{digitS1}}{{digitS2}}"/>
+            </diV>
               
-                  <button type="button" class="btn btn-light btn-sm" 
+            <button type="button" class="btn btn-light btn-sm" 
                       (mouseenter) ="selectDigit('H1')"
                       (mouseleave) ="deselectDigit('H1')"> 
                       <span>H</span>
-                  </button>
-                  <button type="button" class="btn btn-light btn-sm" 
+            </button>
+            <button type="button" class="btn btn-light btn-sm" 
                       (mouseenter) ="selectDigit('H2')"
                       (mouseleave) ="deselectDigit('H2')"> 
                       <span>H</span>
-                  </button>
-                  <button type="button" class="btn btn-light">:</button>
-                  <button type="button" class="btn btn-light btn-sm" 
+            </button>
+            <button type="button" class="btn btn-light">:</button>
+            <button type="button" class="btn btn-light btn-sm" 
                       (mouseenter) ="selectDigit('s1')"
                       (mouseleave) ="deselectDigit('s1')"> 
                       <span>s</span>
-                  </button>
-                  <button type="button" class="btn btn-light btn-sm" 
+            </button>
+            <button type="button" class="btn btn-light btn-sm" 
                       (mouseenter) ="selectDigit('s2')"
                       (mouseleave) ="deselectDigit('s2')"> 
                       <span>s</span>
-                  </button>
-                </div>
-             </div>
+            </button>
+          </div>
+      </div>
     </div>
 
+    <!-- Errors -->
+    <ng-template #errorbox></ng-template>  
 
     <div *ngIf="activeNumericBoard()">
+
 
       <div class="card" style="width: 28rem;">
         <div class="card-header">
@@ -101,6 +100,9 @@
     </div>
 
  </div>
+
+
+
 <!-- With Card
   
   <div class="card" style="width: 28rem;">

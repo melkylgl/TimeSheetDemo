@@ -12,24 +12,21 @@ import { Notify, NotifyType } from './services/model';
 })
 export class AppComponent {
 
-
-  // @ViewChild(TableDayDetailsComponent) table: TableDayDetailsComponent;
   @ViewChild('statusbox', { read: ViewContainerRef }) statusbox: ViewContainerRef;
 
   title = 'demoTimeSheet';
   statusbar: ComponentRef<StatusbarComponent>;
 
-  constructor(private factoty: ComponentFactoryResolver){
+  constructor(private factory: ComponentFactoryResolver){
   }
 
   refreshStatus(event: Notify) {
     Logger.logInfo('AppComponent - refreshStatus :' + JSON.stringify(event));
 
     if (!this.statusbar) {
-      const statusComp = this.factoty.resolveComponentFactory(StatusbarComponent);
+      const statusComp = this.factory.resolveComponentFactory(StatusbarComponent);
       this.statusbar = this.statusbox.createComponent(statusComp);
     }
-
     this.statusbar.instance.date = event.date;
     this.statusbar.instance.msg  = event.msg;
 

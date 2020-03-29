@@ -25,15 +25,22 @@ export class SwipeTimePickerComponent implements OnInit, AfterViewInit {
   digitS2: string;
 
   constructor(private factory: ComponentFactoryResolver) {
-    this.selectedDigit = this._VOID_VALUE;
+    this.resetSelectedDigit();
     this.resetTime();
   }
 
+  private resetSelectedDigit() {
+    this.selectedDigit = this._VOID_VALUE;
+  }
+
   private resetTime() {
-    this.digitH1 = '0';
-    this.digitH2 = '0';
-    this.digitS1 = '0';
-    this.digitS2 = '0';
+    const now = moment();
+    Logger.logDebug(' SwipeTimePickerComponent - resetTime - now:' + now.format('HH:ss'));
+    const str = now.format('HH:mm');
+    this.digitH1 = str.substring(0, 1);
+    this.digitH2 = str.substring(1, 2);
+    this.digitS1 = str.substring(3, 4);
+    this.digitS2 = str.substring(4, 5);
   }
 
   ngOnInit() {
@@ -79,7 +86,7 @@ export class SwipeTimePickerComponent implements OnInit, AfterViewInit {
   @HostListener('mouseleave')
   onMouseLeave() {
     Logger.logDebug('SwipeTimePickerComponent - onMouseLeave ');
-    this.selectedDigit = this._VOID_VALUE;
+    this.resetSelectedDigit();
   }
 
   swipeButtonEvent(event: SwipeButtonEvent) {
@@ -113,6 +120,7 @@ export class SwipeTimePickerComponent implements OnInit, AfterViewInit {
     } else {
       this.createErrorbox(`Attenzione data non valida: ${h1}${h2}:${s1}${s2}`);
     }
+    this.resetSelectedDigit();
   }
 
   getNow(): Date {

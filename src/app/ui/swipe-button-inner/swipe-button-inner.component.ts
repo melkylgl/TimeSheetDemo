@@ -10,6 +10,7 @@ import Logger from 'src/app/Utility/Utility';
 export class SwipeButtonInnerComponent implements OnInit {
 
     @Input()  buttonLabel: string;
+    @Input()  selectLabel: string;
     @Input()  confirmLabel: string;
     @Input()  cancelLabel: string;
     @Output() outInnerEvent: EventEmitter<SwipeButtonInnerEvent> = new EventEmitter<SwipeButtonInnerEvent>();
@@ -24,6 +25,9 @@ export class SwipeButtonInnerComponent implements OnInit {
     }
 
     ngOnInit() {
+      if(!this.confirmLabel) this.confirmLabel  = "Conferma";
+      if(!this.selectLabel) this.selectLabel    = "Seleziona";
+      if(!this.cancelLabel) this.cancelLabel    = "Annulla";
     }
 
     wichButton(type: string) {

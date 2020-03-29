@@ -41,6 +41,7 @@ export class SwipeTimePickerComponent implements OnInit, AfterViewInit {
     this.digitH2 = str.substring(1, 2);
     this.digitS1 = str.substring(3, 4);
     this.digitS2 = str.substring(4, 5);
+    this.resetSelectedDigit();
   }
 
   ngOnInit() {

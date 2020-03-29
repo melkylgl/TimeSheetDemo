@@ -37,6 +37,11 @@
                       <span>{{digitS2}}</span>
             </button>
           </div>
+          
+          <app-swipe-button [buttonLabel]  = "'Azzera'" [confirmLabel] = "'Conferma'" [cancelLabel]  = "'Annulla'" 
+            (outSwipeButtonEvent) = "swipeButtonEvent($event)">
+          </app-swipe-button>
+
       </div>
     </div>
 
@@ -44,7 +49,6 @@
     <ng-template #errorbox></ng-template>  
 
     <div *ngIf="activeNumericBoard()">
-
       <div *ngIf="selectedDigit === 'H1'">
       <div class="card" style="width: 28rem;">
         <div class="card-header"> Seleziona H1 </div>
@@ -111,13 +115,7 @@
             </div>
           </ul>  
         </div>
-  
-          <ul class="list-group list-group-flush">
-            <app-swipe-button [buttonLabel]  = "'Azzera'" [confirmLabel] = "'Conferma'" [cancelLabel]  = "'Annulla'" 
-              (outSwipeButtonEvent) = "swipeButtonEvent($event)">
-            </app-swipe-button>
-          </ul> 
-  
+    
       </div>  
   
     </div>

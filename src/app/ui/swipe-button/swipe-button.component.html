@@ -1,7 +1,5 @@
 
 <!-- swipe button  -->
-
-
 <!-- 
   <div class="alert alert-secondary rounded" role="alert"
   [ngClass]="{ 
@@ -22,9 +20,10 @@
 <span *ngIf="isOver == true && isOverCommit === false">{{cancelLabel}}</span>
 
 <app-swipe-button-inner *ngIf="isOver"
-    [buttonLabel]  = buttonLabel 
-    [confirmLabel] = confirmLabel 
-    [cancelLabel] = cancelLabel 
+    [buttonLabel]   = buttonLabel 
+    [confirmLabel]  = confirmLabel 
+    [selectLabel]   = selectLabel 
+    [cancelLabel]   = cancelLabel 
     (outInnerEvent)  = "innerEvent($event)"
     (outInnerNotify) = "innerNotify($event)"
 ></app-swipe-button-inner> 

@@ -15,6 +15,7 @@ export class SwipeButtonComponent implements OnInit {
 
   @Input()  buttonLabel: string;
   @Input()  confirmLabel: string;
+  @Input()  selectLabel: string;
   @Input()  cancelLabel: string;
   @Output() outSwipeButtonEvent: EventEmitter<SwipeButtonEvent>;
 

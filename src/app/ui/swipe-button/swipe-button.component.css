@@ -1,0 +1,35 @@
+
+.box-zero {
+    z-index: 0;
+    position:relative;
+}
+
+.box-zero:hover {
+    background-color: goldenrod;
+    z-index: 20;
+}
+.box-uno {
+    /*
+    width:100px;
+    height:80px;
+    background:#6752c4;
+    padding:10px;
+    */
+    z-index: 10;
+    position:absolute;
+}
+
+.box-due {
+    /*
+    width:300px;
+    height:100px;
+    background:#ffe7bc;
+    padding:10px;
+    */
+    border-radius: 25px;
+    top:28px;
+    left: 20px;
+    z-index: 20;
+    position:absolute;
+}
+  

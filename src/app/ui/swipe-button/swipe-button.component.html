@@ -8,25 +8,23 @@
   }"
 -->
 <!-- <h6 class="alert alert-secondary rounded" role="alert" -->
-<button type="button" class="btn"
-[ngClass]="{ 
-    'btn-light'  : isOver == false,
-    'btn-danger' : isOver == true && isOverCommit === false,
-    'btn-success': isOver == true && isOverCommit === true 
-  }" >  
+<!-- Small modal -->
 
-<div>{{buttonLabel}}</div>
-<span *ngIf="isOver == true && isOverCommit === true" >{{confirmLabel}}</span>
-<span *ngIf="isOver == true && isOverCommit === false">{{cancelLabel}}</span>
 
-<app-swipe-button-inner *ngIf="isOver"
-    [buttonLabel]   = buttonLabel 
-    [confirmLabel]  = confirmLabel 
-    [selectLabel]   = selectLabel 
-    [cancelLabel]   = cancelLabel 
-    (outInnerEvent)  = "innerEvent($event)"
-    (outInnerNotify) = "innerNotify($event)"
-></app-swipe-button-inner> 
+<button type="button" class="btn box-zero" 
+    [ngClass]="{  'btn-light'  : isOver == false,
+                  'btn-danger' : isOver == true && isOverCommit === false,
+                  'btn-success': isOver == true && isOverCommit === true }" >  
 
-<!-- </h6> -->
+    <div>{{buttonLabel}}</div>
+
+    <app-swipe-button-inner *ngIf="isOver" class="box-due"  
+        [buttonLabel]   = buttonLabel 
+        [confirmLabel]  = confirmLabel 
+        [selectLabel]   = selectLabel 
+        [cancelLabel]   = cancelLabel 
+        (outInnerEvent)  = "innerEvent($event)"
+        (outInnerNotify) = "innerNotify($event)"
+    ></app-swipe-button-inner> 
+    
 </button>

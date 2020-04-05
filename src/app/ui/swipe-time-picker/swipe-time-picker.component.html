@@ -1,20 +1,19 @@
 
 <!-- Time Picker -->
+<span>{{selectedDigit}}</span>
  <div class="input-group">
 
     <div class="input-group-append">
+      
       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-          <div class="btn-group mr-2" role="group" aria-label="First group">
+          
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+
             <div class="input-group-prepend">
                     <div class="input-group-text" id="btnGroupAddon">
                       <i class="far fa-clock"></i>
                     </div>
-            </div>
-            <diV>
-              <!-- <input type="text" class="form-control" 
-                  value="{{digitH1}}{{digitH2}}:{{digitS1}}{{digitS2}}"/> -->
-            </diV>
-              
+            </div>              
             <button type="button" class="btn btn-light btn-sm" 
                       (mouseenter) ="selectDigit('H1')"
                       (mouseleave) ="deselectDigit('H1')"> 
@@ -36,11 +35,21 @@
                       (mouseleave) ="deselectDigit('s2')"> 
                       <span>{{digitS2}}</span>
             </button>
+            <button type="button" class="btn btn-light btn-sm" 
+                      (mouseenter) ="selectDigit(_AGGIUNGI)"> 
+                    <span>{{_AGGIUNGI}}</span>
+            </button>
+
           </div>
           
-          <app-swipe-button [buttonLabel]  = "'Azzera'" [confirmLabel] = "'Conferma'" [cancelLabel]  = "'Annulla'" 
-            (outSwipeButtonEvent) = "swipeButtonEvent($event)">
+          <app-swipe-button [buttonLabel]  = "_ADESSO" [confirmLabel] = "'Conferma'" [cancelLabel]  = "'Annulla'" 
+              (outSwipeButtonEvent) = "swipeButtonEvent($event)">
           </app-swipe-button>
+
+          <app-swipe-button [buttonLabel]  = "_AZZERA" [confirmLabel] = "'Conferma'" [cancelLabel]  = "'Annulla'" 
+              (outSwipeButtonEvent) = "swipeButtonEvent($event)">
+          </app-swipe-button>
+
 
       </div>
     </div>
@@ -49,35 +58,49 @@
     <ng-template #errorbox></ng-template>  
 
     <div *ngIf="activeNumericBoard()">
+
       <div *ngIf="selectedDigit === 'H1'">
-      <div class="card" style="width: 28rem;">
-        <div class="card-header"> Seleziona H1 </div>
-        <ul class="list-group list-group-flush">
-          <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <app-swipe-button [buttonLabel]  = "'0'" [confirmLabel] = "'Conferma'" [cancelLabel]  = "'Annulla'" 
-                (outSwipeButtonEvent) = "swipeButtonEvent($event)">
-              </app-swipe-button>
-              <app-swipe-button [buttonLabel]  = "'1'" [confirmLabel] = "'Conferma'" [cancelLabel]  = "'Annulla'" 
-                (outSwipeButtonEvent) = "swipeButtonEvent($event)">
-              </app-swipe-button>
-              <app-swipe-button [buttonLabel]  = "'2'" [confirmLabel] = "'Conferma'" [cancelLabel]  = "'Annulla '" 
-                (outSwipeButtonEvent) = "swipeButtonEvent($event)">
-              </app-swipe-button>
+        <div class="card" style="width: 28rem;">
+          <div class="card-header"> Seleziona H1 </div>
+          <ul class="list-group list-group-flush">
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <app-swipe-button [buttonLabel]  = "'0'" [confirmLabel] = "'Conferma'" [cancelLabel]  = "'Annulla'" 
+                  (outSwipeButtonEvent) = "swipeButtonEvent($event)">
+                </app-swipe-button>
+                <app-swipe-button [buttonLabel]  = "'1'" [confirmLabel] = "'Conferma'" [cancelLabel]  = "'Annulla'" 
+                  (outSwipeButtonEvent) = "swipeButtonEvent($event)">
+                </app-swipe-button>
+                <app-swipe-button [buttonLabel]  = "'2'" [confirmLabel] = "'Conferma'" [cancelLabel]  = "'Annulla '" 
+                  (outSwipeButtonEvent) = "swipeButtonEvent($event)">
+                </app-swipe-button>
+              </div>
             </div>
-          </div>
-        </ul>  
-      </div>
-      <ul class="list-group list-group-flush">
-          <app-swipe-button [buttonLabel]  = "'Azzera'" [confirmLabel] = "'Conferma'" [cancelLabel]  = "'Annulla'" 
-            (outSwipeButtonEvent) = "swipeButtonEvent($event)">
-          </app-swipe-button>
-      </ul> 
+          </ul>  
+        </div>
+
+        <ul class="list-group list-group-flush">
+            <app-swipe-button [buttonLabel]  = "'Azzera'" [confirmLabel] = "'Conferma'" [cancelLabel]  = "'Annulla'" 
+              (outSwipeButtonEvent) = "swipeButtonEvent($event)">
+            </app-swipe-button>
+        </ul> 
+
       </div>  
 
       <div *ngIf="selectedDigit !== 'H1'">
         <div class="card" style="width: 28rem;">
           <div class="card-header"> Seleziona {{selectedDigit}} </div>
+
+          <ul class="list-group list-group-flush">
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <app-swipe-button [buttonLabel]  = "'+1H'" [confirmLabel] = "'Conferma'" [cancelLabel]  = "'Annulla'" 
+                    (outSwipeButtonEvent) = "swipeButtonEvent($event)">
+                </app-swipe-button>
+              </div>
+            </div>
+          </ul>  
+
           <ul class="list-group list-group-flush">
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
               <div class="btn-group" role="group" aria-label="Basic example">
@@ -114,6 +137,7 @@
               </div>
             </div>
           </ul>  
+
         </div>
     
       </div>  

@@ -25,9 +25,9 @@ export class SwipeButtonInnerComponent implements OnInit {
     }
 
     ngOnInit() {
-      if(!this.confirmLabel) this.confirmLabel  = "Conferma";
-      if(!this.selectLabel) this.selectLabel    = "Seleziona";
-      if(!this.cancelLabel) this.cancelLabel    = "Annulla";
+      if (!this.confirmLabel) { this.confirmLabel  = 'Conferma'; }
+      if (!this.selectLabel)  { this.selectLabel   = 'Seleziona'; }
+      if (!this.cancelLabel)  { this.cancelLabel   = 'Annulla'; }
     }
 
     wichButton(type: string) {
